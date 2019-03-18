@@ -1,0 +1,10 @@
+header {
+  background-color: black;
+  display: flex;
+  padding: 15px;
+  justify-content: space-around;
+}
+
+.logo {
+  flex-basis: 80%;
+}
