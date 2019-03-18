@@ -6,8 +6,12 @@ class Menu extends React.Component {
   render() {
     return (
       <div className="menu">
-        {this.menuItem.map(item => {
-          return <div className="menu-item">{item}</div>;
+        {this.menuItem.map((item, index) => {
+          return (
+            <div key={index} className="menu-item">
+              {item}
+            </div>
+          );
         })}
       </div>
     );
