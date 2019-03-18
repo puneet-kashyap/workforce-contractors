@@ -7,7 +7,7 @@ class Header extends React.Component {
     return (
       <header>
         <div class="logo">
-          <img class="responsive" src={logo} alt="Logo"/>
+          <img class="logo-img" src={logo} alt="Logo"/>
         </div>
       </header>
     );
