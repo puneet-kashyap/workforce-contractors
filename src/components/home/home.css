@@ -1,0 +1,32 @@
+main {
+    margin: 20px;
+}
+
+.rent-reasons {
+    justify-content: flex-start;
+}
+
+.reason {
+    padding-bottom: 5px;
+}
+
+h2 {
+    text-align: center;
+    color: brown;
+} 
+
+h1 {
+    text-align: center;
+}
+
+.title {
+    margin: 20px 0px 10px 0px;
+    display: block;
+    font-weight: bold;
+    color: darkblue;
+}
+
+.aboutUs {
+    margin: 20px 0px 50px 0px;
+    text-align: justify;
+}

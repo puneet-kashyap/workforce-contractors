@@ -2,12 +2,13 @@ footer {
   background-color: black;
   padding: 25px;
   color: white;
+  text-align: center;
 }
 
 .name {
   font-weight: bold;
   font-size: x-large;
-  padding: 10px;
+  padding-bottom: 10px;
 }
 
 .email {
@@ -32,4 +33,5 @@ a {
   background-color: slategrey;
   padding: 5px;
   font-size: small;
+  text-align: center;
 }
