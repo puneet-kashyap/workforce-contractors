@@ -9,7 +9,7 @@ header {
   flex-basis: 80%;
 }
 .logo-img {
-    width: auto;
-    height: auto;
-    max-height: 50px
-  }
+  width: auto;
+  height: auto;
+  max-height: 50px;
+}

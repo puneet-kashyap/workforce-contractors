@@ -1,0 +1,11 @@
+.menu {
+  background-color: #0174bc;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
+}
+
+.menu-item {
+  color: #f58634;
+  font-weight: bold;
+}
