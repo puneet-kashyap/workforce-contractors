@@ -1,0 +1,15 @@
+.products {
+  display: inline-flex;
+  padding: 10px;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.tool-img {
+  width: 100%;
+  height: 100%;
+}
+
+.rent-button {
+  margin: auto;
+}

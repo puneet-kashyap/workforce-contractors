@@ -17,7 +17,7 @@ class Home extends React.Component {
             {rentalReasons.map(reason => {
               return (
                 <div className="reason">
-                  <span class="title">
+                  <span className="title">
                     {reason.id}. {reason.title}
                   </span>
                   <span>{reason.reason}</span>
