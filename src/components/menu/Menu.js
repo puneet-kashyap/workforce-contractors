@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from "react-router-dom";
+
 import './menu.css';
 
 class Menu extends React.Component {
@@ -9,7 +11,7 @@ class Menu extends React.Component {
         {this.menuItem.map((item, index) => {
           return (
             <div key={index} className="menu-item">
-              {item}
+               <Link className="menu-link" to={item}>{item}</Link>
             </div>
           );
         })}
