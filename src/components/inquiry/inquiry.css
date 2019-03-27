@@ -1,0 +1,31 @@
+.inquiry {
+  padding: 15px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+h1 {
+  color: #3f51b5;
+}
+
+.inquiryCard {
+  max-width: 500px;
+  margin: auto;
+}
+
+.text-field {
+  max-width: 90%;
+  padding: 5px;
+}
+
+.submit-button {
+  margin: 20px;
+  font-weight: 800;
+  background-color: red;
+}
+
+@media (min-height: 600px) {
+
+}

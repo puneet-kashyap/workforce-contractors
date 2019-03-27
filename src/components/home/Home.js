@@ -14,9 +14,9 @@ class Home extends React.Component {
         <div>
           <h2>Top ten reasons to rent:</h2>
           <div className="rent-reasons">
-            {rentalReasons.map(reason => {
+            {rentalReasons.map((reason, index) => {
               return (
-                <div className="reason">
+                <div key={index} className="reason">
                   <span className="title">
                     {reason.id}. {reason.title}
                   </span>
