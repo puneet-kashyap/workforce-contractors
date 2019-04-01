@@ -7,7 +7,7 @@ export const rentalReasons = [
   {
     id: 2,
     title: 'Right Equipment for the Right Job',
-    reason: `Eliminate the hidden costs of inefficiency due to use of wrong size or type of equipment and the maintenance and repair incurred. Agricultural equipment rentals from our Brantford location ensures the right equipment for the job.`
+    reason: `Eliminate the hidden costs of inefficiency due to use of wrong size or type of equipment and the maintenance and repair incurred. Agricultural equipment rentals from our Kapurthal location ensures the right equipment for the job.`
   },
   {
     id: 3,
