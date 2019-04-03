@@ -8,3 +8,11 @@
   margin: auto;
   padding-bottom: 15px;
 }
+
+.date {
+  margin: 15px 0px;
+}
+
+.title {
+  text-align: center;
+}

@@ -43,7 +43,7 @@ class Products extends React.Component {
                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                       {product.title} Rental Details
                     </ExpansionPanelSummary>
-                    <ExpansionPanelDetails>
+                    <ExpansionPanelDetails style={{justifyContent: "center"}}>
                       <ProductForm product={product}/>
                     </ExpansionPanelDetails>
                   </ExpansionPanel>
