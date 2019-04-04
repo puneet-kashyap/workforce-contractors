@@ -16,3 +16,13 @@
 .title {
   text-align: center;
 }
+
+.snackbar-msg {
+  display: flex;
+  align-items: center;
+  color: springgreen;
+}
+
+.icon {
+  padding-right: 10px;
+}

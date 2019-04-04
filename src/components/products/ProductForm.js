@@ -1,9 +1,12 @@
 import { Button } from '@material-ui/core';
+import Snackbar from '@material-ui/core/Snackbar';
 import TextField from '@material-ui/core/TextField';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import { DatePicker } from 'material-ui-pickers';
 import React, { Component } from 'react';
 import { Field, Form, reduxForm } from 'redux-form';
-import { DatePicker } from 'material-ui-pickers';
 import './productForm.css';
+
 
 const validate = values => {
   const errors = {};
@@ -64,10 +67,14 @@ const renderDateField = ({
 );
 
 class ProductForm extends Component {
+  state = {
+    open: false
+  };
   onSubmit = formValues => {
-    if(formValues['rental-date'] < formValues['return-date']){
+    if (formValues['rental-date'] < formValues['return-date']) {
       console.log(formValues);
-    };
+      this.setState({ open: true });
+    }
   };
 
   render() {
@@ -106,6 +113,20 @@ class ProductForm extends Component {
           >
             Add to Cart
           </Button>
+          <Snackbar
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'center'
+            }}
+            open={this.state.open}
+            autoHideDuration={6000}
+            message={
+              <span className="snackbar-msg">
+                <CheckCircleIcon className="icon" />
+                {title} added to Cart.
+              </span>
+            }
+          />
         </Form>
       </div>
     );
