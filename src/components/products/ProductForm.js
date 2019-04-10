@@ -7,7 +7,6 @@ import React, { Component } from 'react';
 import { Field, Form, reduxForm } from 'redux-form';
 import './productForm.css';
 
-
 const validate = values => {
   const errors = {};
   const requiredFields = ['quantity', 'rental-date', 'return-date'];
@@ -70,6 +69,11 @@ class ProductForm extends Component {
   state = {
     open: false
   };
+
+  handleSnackbarClose = () => {
+    this.setState({ open: false });
+  }
+
   onSubmit = formValues => {
     if (formValues['rental-date'] < formValues['return-date']) {
       console.log(formValues);
@@ -120,6 +124,7 @@ class ProductForm extends Component {
             }}
             open={this.state.open}
             autoHideDuration={6000}
+            onClose={this.handleSnackbarClose}
             message={
               <span className="snackbar-msg">
                 <CheckCircleIcon className="icon" />
