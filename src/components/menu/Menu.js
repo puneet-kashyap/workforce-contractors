@@ -11,7 +11,7 @@ class Menu extends React.Component {
         {this.menuItem.map((item, index) => {
           return (
             <div key={index} className="menu-item">
-               <Link className="menu-link" to={item}>{item}</Link>
+               <Link className="menu-link" to={`/${item}`}>{item}</Link>
             </div>
           );
         })}
