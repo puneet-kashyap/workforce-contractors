@@ -36,7 +36,6 @@ const renderTextField = ({
     {...input}
     {...custom}
     className="text-field"
-    fullWidth
     style={{ marginBottom: '10px' }}
   />
 );

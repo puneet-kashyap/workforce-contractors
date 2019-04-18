@@ -6,7 +6,6 @@ import { Button } from '@material-ui/core';
 
 import './products.css';
 import { productList } from './productList';
-import ProductForm from './ProductForm';
 
 class Products extends React.Component {
   render() {
@@ -29,7 +28,10 @@ class Products extends React.Component {
                       component={Link}
                       variant="contained"
                       color="primary"
-                      to={`product/${product.id}`}
+                      to={{
+                        pathname: `product/${product.id}`,
+                        state: product
+                      }}
                     >
                       Rent It
                     </Button>
