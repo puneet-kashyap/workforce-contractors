@@ -11,6 +11,10 @@ const getProduct = (id) => {
   return product;
 }
 
+const setProduct = (product) => {
+  jsonProducts.products.push(product);
+}
+
 module.exports = {
   getAllProducts,
   getProduct
