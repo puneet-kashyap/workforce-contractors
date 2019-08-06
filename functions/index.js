@@ -1,12 +1,12 @@
 const functions = require('firebase-functions');
-const admin = require('firebase-admin');
 const express = require('express');
 const cors = require('cors');
-const products = require('./routes/products.routes');
+const products = require('./src/routes/products.routes');
 
 const app = express();
-admin.initializeApp();
+
 app.use(cors({ origin: true }));
+app.use(express.json()) 
 
 app.get('/health', (req, res) => {
   res.send('Health is Okay');
