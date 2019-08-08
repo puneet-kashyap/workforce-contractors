@@ -54,14 +54,49 @@ const setProduct = (product: Product, res: Response) => {
     .set(product)
     .then((result: any) => {
       console.log(result);
+      res.json(product);
+    })
+    .catch((err: any) => {
+      console.error(err);
+      res.send({error: err});
+    });
+};
+
+const updateProduct = (product: Product, res: Response) => {
+  firebase.db
+    .collection(PRODUCTS)
+    .doc(product.id.toString())
+    .update(product)
+    .then((result: any) => {
+      console.log(result);
+      res.json(product);
     })
     .catch((err: any) => {
       console.error(err);
     });
 };
 
+const deleteProduct = (id: string, res: Response) => {
+  firebase.db
+    .collection(PRODUCTS)
+    .doc(id.toString())
+    .delete()
+    .then((result: any) => {
+      console.log(result);
+      res.send({
+        status: 'Success', 
+        message: `Product ID: ${id} deleted`
+      })
+    })
+    .catch((err: any) => {
+      console.error(err);
+    });
+}
+
 export default {
   getAllProducts,
   getProduct,
-  setProduct
+  setProduct,
+  updateProduct,
+  deleteProduct
 };

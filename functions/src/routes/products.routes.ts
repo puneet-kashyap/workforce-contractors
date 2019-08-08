@@ -16,7 +16,16 @@ router.get('/:id', (req: express.Request, res: express.Response) => {
 router.post('/', (req: express.Request, res: express.Response) => {
   const newProduct: Product = req.body
   products.setProduct(newProduct, res);
-  res.json(newProduct);
+});
+
+router.put('/:id', (req: express.Request, res: express.Response) => {
+  const updatedProduct: Product = req.body
+  products.updateProduct(updatedProduct, res);
+});
+
+router.delete('/:id', (req: express.Request, res: express.Response) => {
+  const productId: string = req.params.id
+  products.deleteProduct(productId, res);
 });
 
 export default router;
