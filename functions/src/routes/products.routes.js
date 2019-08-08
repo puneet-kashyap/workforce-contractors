@@ -14,8 +14,8 @@ router.get('/:id', (req, res) => {
 })
 
 router.post('/',(req, res) => {
-  res.json(req.body);
   products.setProduct(req.body)
+  res.json(req.body);
 })
 
 module.exports = router;

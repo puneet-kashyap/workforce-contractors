@@ -2,8 +2,7 @@ const fs = require('fs');
 const firebase = require('../services/firebase.service');
 
 const getAllProducts = () => {
-  // let rawdata = fs.readFileSync(__dirname + "/../assets/products.json");
-  return jsonProducts;
+  return 'jsonProducts';
 };
 
 const getProduct = id => {
@@ -25,9 +24,10 @@ const getProduct = id => {
 };
 
 const setProduct = product => {
+  console.log(product.id)
   firebase.db
     .collection('products')
-    .doc("test")
+    .doc(product.id.toString())
     .set(product)
     .then(result => {
       console.log(result);
