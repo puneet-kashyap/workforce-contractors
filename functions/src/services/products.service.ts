@@ -1,10 +1,9 @@
-import { Response } from 'express';
 import { Product, ProductNotFound, ProductList } from '../interface/Products';
 
 const firebase = require('../services/firebase.service');
 const PRODUCTS = 'products';
 
-const getAllProducts = (res: Response) => {
+const getAllProducts = (fn: any) => {
   firebase.db
     .collection(PRODUCTS)
     .get()
@@ -17,15 +16,14 @@ const getAllProducts = (res: Response) => {
       snapshot.forEach((doc: any) => {
         productList.products.push(doc.data());
       });
-      res.send(productList);
+      fn(productList);
     })
     .catch((err: any) => {
       console.log('Error getting documents', err);
     });
-  return 'jsonProducts';
 };
 
-const getProduct = (id: string, res: Response) => {
+const getProduct = (id: string, fn: any) => {
   firebase.db
     .collection(PRODUCTS)
     .doc(id)
@@ -37,9 +35,9 @@ const getProduct = (id: string, res: Response) => {
           id: id,
           message: 'Product not found'
         };
-        res.send(error);
+        fn(error);
       } else {
-        res.send(doc.data());
+        fn(doc.data());
       }
     })
     .catch((err: any) => {
@@ -47,51 +45,55 @@ const getProduct = (id: string, res: Response) => {
     });
 };
 
-const setProduct = (product: Product, res: Response) => {
+const setProduct = (product: Product, fn: any) => {
   firebase.db
     .collection(PRODUCTS)
     .doc(product.id.toString())
     .set(product)
     .then((result: any) => {
       console.log(result);
-      res.json(product);
+      fn(product);
     })
     .catch((err: any) => {
       console.error(err);
-      res.send({error: err});
+      fn({ error: err });
     });
 };
 
-const updateProduct = (product: Product, res: Response) => {
+const updateProduct = (product: Product, fn: any) => {
   firebase.db
     .collection(PRODUCTS)
     .doc(product.id.toString())
     .update(product)
     .then((result: any) => {
       console.log(result);
-      res.json(product);
+      fn(product);
     })
     .catch((err: any) => {
       console.error(err);
+      const error: ProductNotFound = {
+        id: product.id,
+        message: 'Product not found'
+      };
+      fn(error);
     });
 };
 
-const deleteProduct = (id: string, res: Response) => {
+const deleteProduct = (id: string, fn: any) => {
   firebase.db
     .collection(PRODUCTS)
     .doc(id.toString())
     .delete()
     .then((result: any) => {
-      console.log(result);
-      res.send({
-        status: 'Success', 
-        message: `Product ID: ${id} deleted`
-      })
+      fn({
+        status: 'Success',
+        message: `Product ID: ${id} doesn't exist anymore.`
+      });
     })
     .catch((err: any) => {
       console.error(err);
     });
-}
+};
 
 export default {
   getAllProducts,
