@@ -6,7 +6,7 @@ const GENERAL = {
   AUTH_FAILURE: 'Error received from AuthenticateAPI',
   AUTH_SUCCESS: 'Token received from AuthenticateAPI',
   HEALTH_URL: '/health',
-  HOST: 'http://localhost:5000/workforce-contractors/us-central1/api',
+  HOST: 'http://localhost:3001',
   NAME: 'Workforce Contractor',
   PORT: 5000,
   VERSION: '1.0.0',
