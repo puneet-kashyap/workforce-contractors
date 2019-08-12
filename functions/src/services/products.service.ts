@@ -1,6 +1,6 @@
 import { Product, ProductNotFound, ProductList } from '../interface/Products';
 
-const firebase = require('../services/firebase.service');
+import firebase from '../services/firebase.service';
 const PRODUCTS = 'products';
 
 const getAllProducts = (fn: any) => {
