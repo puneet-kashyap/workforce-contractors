@@ -6,10 +6,14 @@ const GENERAL = {
   AUTH_FAILURE: 'Error received from AuthenticateAPI',
   AUTH_SUCCESS: 'Token received from AuthenticateAPI',
   HEALTH_URL: '/health',
-  HOST: 'http://localhost:3001',
+  HOST: 'http://localhost:5000/workforce-contractors/us-central1/api',
   NAME: 'Workforce Contractor',
   PORT: 5000,
   VERSION: '1.0.0',
+}
+
+const DATE = {
+  FORMAT: "DD-MM-YYYY"
 }
 
 const HTTP_ERROR = {
@@ -29,5 +33,6 @@ const HEALTH_INFO: HealthInfo = {
 export {
   GENERAL,
   HEALTH_INFO,
-  HTTP_ERROR
+  HTTP_ERROR,
+  DATE
 }
