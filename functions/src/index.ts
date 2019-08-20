@@ -1,8 +1,7 @@
 import * as functions from 'firebase-functions';
 import * as express from 'express';
 import * as cors from 'cors';
-import products from './routes/products.routes';
-import inventory from './routes/inventory.routes';
+import { setupRoutes } from './routes/index';
 import { HEALTH_INFO, GENERAL } from './utils/Constants';
 
 const app: express.Application = express();
@@ -15,7 +14,7 @@ app.get(GENERAL.HEALTH_URL, (req, res): void => {
   res.send(HEALTH_INFO);
 });
 
-app.use('/products', products);
-app.use('/inventory', inventory);
+
+setupRoutes(app);
 
 exports.api = functions.https.onRequest(app);
