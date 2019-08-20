@@ -1,18 +1,17 @@
 import * as express from 'express';
-import products from '../services/products.service';
-import { Product } from '../interface/Products';
 import Inventory from '../services/inventory.service';
 
 const router = express.Router();
 
 router.get('/:id', (req: express.Request, res: express.Response) => {
+  const dateRange = {
+    from: req.query.from,
+    to: req.query.to
+  };
   const productId: string = req.params.id.toString();
-  Inventory.getProductAvailability(req, (availability: any) => {
-    console.log(availability)
+  Inventory.getProductRange(productId, dateRange, (inventory: []) => {
+    res.send(inventory);
   });
-  products.getProduct(productId, (product: Product) => {
-    res.send(product);
-  })
 });
 
 export default router;

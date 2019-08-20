@@ -1,6 +1,15 @@
 export interface Product {
   id: string,
   name: string
+  totalQuantity: number
+  rentalDates: []
+}
+
+export interface Order {
+  productId: string,
+  name: string,
+  quantity: number,
+  dates: []
 }
 
 export interface ProductList {

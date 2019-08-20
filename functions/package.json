@@ -8,7 +8,7 @@
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log",
-    "dev": "nodemon -e ts --exec npm run serve"
+    "server": "nodemon -e ts --exec npm run serve"
   },
   "engines": {
     "node": "8"
