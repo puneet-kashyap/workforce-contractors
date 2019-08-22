@@ -4,7 +4,9 @@ import admin = require('firebase-admin');
 admin.initializeApp(functions.config().firebase);
 
 const db = admin.firestore();
+const timeStamp = admin.firestore.Timestamp;
 
 export default {
-  db
-}
+  db,
+  timeStamp
+};
