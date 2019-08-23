@@ -5,13 +5,6 @@ export interface Product {
   rentalDates: []
 }
 
-export interface Order {
-  productId: string,
-  name: string,
-  quantity: number,
-  dates: []
-}
-
 export interface ProductList {
   products: Product[];
 }

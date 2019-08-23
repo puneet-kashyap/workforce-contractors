@@ -1,4 +1,5 @@
 var moment = require('moment');
+import firebase from '../services/firebase.service';
 
 export const loopThroughDates = (startDate: any, endDate: any) => {
   const datesObj: any = {};
@@ -10,4 +11,12 @@ export const loopThroughDates = (startDate: any, endDate: any) => {
     datesObj[m.format('DD-MM-YYYY')] = 0;
   }
   return datesObj;
+};
+
+export const timestampToDate = (date: any) => {
+  const formattedDate = new firebase.timeStamp(
+    date._seconds,
+    date._nanoseconds
+  ).toDate();
+  return moment(formattedDate).format('DD-MM-YYYY');
 };

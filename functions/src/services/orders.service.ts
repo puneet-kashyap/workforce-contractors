@@ -1,5 +1,8 @@
 import firebase from '../services/firebase.service';
-import { Order, isOrder } from '../interface/Orders';
+import { Order } from '../interface/Orders';
+import { timestampToDate } from '../utils/DateUtil';
+
+const ORDERS_COLLECTION = 'orders';
 
 const submitOrder = (req: any, next: any) => {
   const orderDetails = {
@@ -13,52 +16,47 @@ const submitOrder = (req: any, next: any) => {
   };
 
   const newOrder: Order = new Order(orderDetails);
+  newOrder.submitOrder(next);
+};
 
-  if (isOrder(newOrder)) {
-    firebase.db
-      .collection('orders')
-      .add(JSON.parse(JSON.stringify(newOrder)))
-      .then(ref => {
-        console.log('Added document with ID: ', ref.id);
-        next(Object.assign(newOrder, { refId: ref.id }));
-      })
-      .catch(err => {
-        console.error(`Error>>> + ${err}`);
-        next('Error');
-      });
-  } else {
-    next(Object.assign(newOrder, { error: 'Required field(s) missing' }));
-  }
+const updateOrder = (req: any, next: any) => {
+  firebase
+    .updateDocument(ORDERS_COLLECTION, req.params.id, req.body)
+    .then((result: any) => {
+      next(result);
+    });
+};
+
+const deleteOrder = (documentId: string, next: any) => {
+  firebase.deleteDocument(ORDERS_COLLECTION, documentId).then((result: any) => {
+    next(result);
+  });
+};
+
+const getAnOrder = (documentId: string, next: any) => {
+  firebase
+    .getDocument(ORDERS_COLLECTION, documentId)
+    .then((orderDetails: any) => {
+      next(orderDetails);
+    });
 };
 
 const getAllOrders = (req: any, next: any) => {
-  firebase.db
-    .collection('orders')
-    .get()
-    .then((snapshot: any) => {
-      if (snapshot.empty) {
-        console.log('No matching documents.');
-        return;
-      }
-      const orderList: any = { orders: [] };
-      snapshot.forEach((doc: any) => {
-        const formattedDate = doc.data().dates.map((date: any) => {
-          return date.toDate();
-        });
-        const formattedOrder = Object.assign(doc.data(), {
-          dates: formattedDate
-        });
-        orderList.orders.push(formattedOrder);
-      });
-      next(orderList);
-    })
-    .catch((err: any) => {
-      console.log('Error getting documents', err);
-      throw new Error(err);
+  const rawOrders = firebase.getAllDocuments(ORDERS_COLLECTION);
+  rawOrders.then((docList: any) => {
+    const allOrders: any[] = [];
+    docList.map((order: any) => {
+      order.orderDate = timestampToDate(order.orderDate);
+      allOrders.push(order);
     });
+    next(allOrders);
+  });
 };
 
 export default {
   submitOrder,
-  getAllOrders
+  getAllOrders,
+  deleteOrder,
+  updateOrder,
+  getAnOrder
 };
